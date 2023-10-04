@@ -1,19 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/Widgets/appbar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+
+  void _handleMenuButtonTap() {
+    print('Menu button tapped!');
+  }
+
+  void _kebabButton() {
+    print('Kebab button tapped!');
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: _handleMenuButtonTap,
           icon: const Icon(Icons.menu),
         ),
         backgroundColor: Colors.black,
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))
+          IconButton(
+            onPressed: _kebabButton,
+            icon: const Icon(
+              Icons.more_vert,
+            ),
+          )
         ],
       ),
       body: Container(
@@ -28,21 +42,7 @@ class HomeScreen extends StatelessWidget {
             end: Alignment.bottomLeft,
           ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            FloatingActionButton(
-              backgroundColor: Colors.orange,
-              onPressed: () {},
-              child: const Icon(
-                Icons.add,
-                size: 30,
-                color: Colors.white,
-              ),
-            ),
-          ],
-        ),
+        child: const NavBar(),
       ),
     );
   }
